@@ -2,14 +2,18 @@ from GameLogic import *
 import sys
 import time
 
+#setting game and menu variables
 game_state = False
 button_clicked = False
-button = Button()
 
+#intializing instances for game logic and menu button logic
+button = Button()
 game = Game()
 
+#adding window name
 pygame.display.set_caption("Tic Tac Toe")
 
+#setting framerate 
 FPS = 60
 
 while True:
