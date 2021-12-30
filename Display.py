@@ -24,16 +24,16 @@ button_colour = dark_red
 
 def background(game_state):	
 
-	global button_colour
+	line_thickiness = 10
 
 	if game_state:
 
 		screen.fill(background_color_grey)
 
-		pygame.draw.rect(screen,background_cyan,(260,0,10,800))
-		pygame.draw.rect(screen,background_cyan,(537,0,10,800))	
-		pygame.draw.rect(screen,background_cyan,(0,260,800,10))
-		pygame.draw.rect(screen,background_cyan,(0,537,800,10))	
+		pygame.draw.rect(screen,background_cyan,(260,0,line_thickiness,height))
+		pygame.draw.rect(screen,background_cyan,(530,0,line_thickiness,height))	
+		pygame.draw.rect(screen,background_cyan,(0,260,width,line_thickiness))
+		pygame.draw.rect(screen,background_cyan,(0,530,width,line_thickiness))	
 	
 	else:
 
@@ -80,7 +80,6 @@ class Button:
 					pygame.draw.rect(screen, cyan, self.button_rect, border_radius = 10)
 					screen.blit(self.Start_Text_label, self.text_rect)
 					if self.clicked:
-						print('clicked')
 						return True
 			else:
 				pygame.draw.rect(screen, dark_cyan, self.button_rect, border_radius = 10)
