@@ -4,11 +4,13 @@ import time
 
 #setting game and menu variables
 game_state = False
-button_clicked = False
+restart = False
+score = [0,0]
 
 #intializing instances for game logic and menu button logic
-button = Button()
-game = Game()
+Start_Text = 'Start Game'
+Start_Game_Button = Button([600,200],[width/2,height/2],Start_Text,100,20)
+game = Game(score)
 
 #adding window name
 pygame.display.set_caption("Tic Tac Toe")
@@ -24,10 +26,19 @@ while True:
 			sys.exit()
 
 	background(game_state)
-	if button.draw(game_state):
-		game_state = True
+	if not game_state:	
+		if Start_Game_Button.draw():
+			game_state = True
 
 	if game_state:
-		game.update()
+		if not game.update():
+			restart = True
+
+	if restart:
+		Start_Game_Button.clicked = False
+		game_state = False
+		game = Game(score)
+		restart = False
+
 
 	pygame.display.update()
