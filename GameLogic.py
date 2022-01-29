@@ -36,7 +36,8 @@ class Game:
 		self.game_status = 0
 
 		#menus
-		self.main_menu_button = Button([400,100],[400,500],"Main Menu",75,5)
+		self.main_menu_button = Button([250,100],[250,500],"Main Menu",50,5)
+		self.replay_button = Button([250,100],[550,500],"Replay",50,5)
 		self.draw_menu = Menu((600,400), (width/2,height/2), dark_red, "Its a Draw!", (width/2,350), auto_text_size=True)
 		self.win_O_menu = Menu((600,400), (width/2,height/2), dark_red, "O Wins!", (width/2,350), auto_text_size=True)
 		self.win_X_menu = Menu((600,400), (width/2,height/2), dark_red, "X Wins!", (width/2,350), auto_text_size=True)
@@ -44,7 +45,8 @@ class Game:
 		#labels
 		score_font = pygame.font.SysFont('Poppins-Regular', 80)
 		self.score_label = score_font.render(f"{score[0]} - {score[1]}",1,"#FEFFFA")
-		self.score_label_rect = self.score_label.get_rect(center=(725,750))
+		self.score_label_rect = self.score_label.get_rect(midright=(725,750))
+		self.score = score
 
 	def draw(self):
 		for idx, piece in enumerate(self.board):
@@ -126,9 +128,10 @@ class Game:
 			else:
 				#when you let go of the mouse button it will record the square you are over and place your piece on it
 				if self.clicked:
-					self.board[self.selected_square] = self.current_piece
-					self.player = 1 if self.player == 0 else 0
-					self.clicked = False
+					if self.board[self.selected_square] == 0:
+						self.board[self.selected_square] = self.current_piece
+						self.player = 1 if self.player == 0 else 0
+						self.clicked = False
 
 			self.mouse_hover()
 
@@ -151,18 +154,26 @@ class Game:
 				self.win_O_menu.draw()
 			
 			if self.main_menu_button.draw():
-				return False
+				return 1
+
+			if self.replay_button.draw():
+				#enters if statemnet twice before ending game leading to score updated twice when it should only updated once
+				self.score[self.player] += 0.5
+				return 2
 			
 		elif self.game_status == 2:
 			
 			self.draw_menu.draw()
 
 			if self.main_menu_button.draw():
-				return False
+				return 1
+
+			if self.replay_button.draw():
+				return 2
 
 		screen.blit(self.score_label,self.score_label_rect)
 
-		return True
+		return 0
 
 
 		

@@ -31,14 +31,15 @@ while True:
 			game_state = True
 
 	if game_state:
-		if not game.update():
-			restart = True
+		if game.update() == 1:
+			Start_Game_Button.clicked = False
+			game_state = False
+			restart = False
 
-	if restart:
-		Start_Game_Button.clicked = False
-		game_state = False
-		game = Game(score)
-		restart = False
+		elif game.update() == 2:
+			print(game.score)
+			game = Game(game.score)
+
 
 
 	pygame.display.update()
