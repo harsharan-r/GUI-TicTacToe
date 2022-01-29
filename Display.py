@@ -32,8 +32,8 @@ def background(game_state):
 
 		screen.fill(background_color_grey)
 
-		pygame.draw.rect(screen,background_cyan,(260,0,line_thickiness,height))
-		pygame.draw.rect(screen,background_cyan,(530,0,line_thickiness,height))	
+		pygame.draw.rect(screen,background_cyan,(260,0,line_thickiness,800))
+		pygame.draw.rect(screen,background_cyan,(530,0,line_thickiness,800))	
 		pygame.draw.rect(screen,background_cyan,(0,260,width,line_thickiness))
 		pygame.draw.rect(screen,background_cyan,(0,530,width,line_thickiness))	
 	

@@ -35,10 +35,16 @@ class Game:
 		#game status; nothing = 0, game won = 1 game draw = 2
 		self.game_status = 0
 
+		#menus
 		self.main_menu_button = Button([400,100],[400,500],"Main Menu",75,5)
 		self.draw_menu = Menu((600,400), (width/2,height/2), dark_red, "Its a Draw!", (width/2,350), auto_text_size=True)
 		self.win_O_menu = Menu((600,400), (width/2,height/2), dark_red, "O Wins!", (width/2,350), auto_text_size=True)
 		self.win_X_menu = Menu((600,400), (width/2,height/2), dark_red, "X Wins!", (width/2,350), auto_text_size=True)
+
+		#labels
+		score_font = pygame.font.SysFont('Poppins-Regular', 80)
+		self.score_label = score_font.render(f"{score[0]} - {score[1]}",1,"#FEFFFA")
+		self.score_label_rect = self.score_label.get_rect(center=(725,750))
 
 	def draw(self):
 		for idx, piece in enumerate(self.board):
@@ -94,7 +100,7 @@ class Game:
 				self.selected_square = i
 
 				#shows a preview of the piece in the square you are hovering over
-				if self.current_piece == "X":
+				if self.player == 1:
 					self.preview_X_rect = self.X_Obj.convert_alpha()
 					self.preview_X_rect.set_alpha(128)
 					X_rect = self.preview_X_rect.get_rect(center = self.square_pos[i].center)
@@ -138,10 +144,10 @@ class Game:
 
 		elif self.game_status == 1:
 
-			if self.current_piece == "X":
+			if self.player == 0:
 				self.win_X_menu.draw()
 
-			elif self.current_piece == "O":
+			elif self.player == 1:
 				self.win_O_menu.draw()
 			
 			if self.main_menu_button.draw():
@@ -153,6 +159,8 @@ class Game:
 
 			if self.main_menu_button.draw():
 				return False
+
+		screen.blit(self.score_label,self.score_label_rect)
 
 		return True
 
