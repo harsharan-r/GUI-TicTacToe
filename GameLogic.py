@@ -145,6 +145,7 @@ class Game:
 			#updating graphics
 			self.draw()
 
+
 		elif self.game_status == 1:
 
 			if self.player == 0:
@@ -157,9 +158,11 @@ class Game:
 				return 1
 
 			if self.replay_button.draw():
-				#enters if statemnet twice before ending game leading to score updated twice when it should only updated once
-				self.score[self.player] += 0.5
+				
+				self.score[self.player] += 1
 				return 2
+
+			
 			
 		elif self.game_status == 2:
 			
@@ -169,11 +172,14 @@ class Game:
 				return 1
 
 			if self.replay_button.draw():
+
 				return 2
+
+
 
 		screen.blit(self.score_label,self.score_label_rect)
 
-		return 0
+		
 
 
 		

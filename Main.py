@@ -4,7 +4,6 @@ import time
 
 #setting game and menu variables
 game_state = False
-restart = False
 score = [0,0]
 
 #intializing instances for game logic and menu button logic
@@ -31,14 +30,19 @@ while True:
 			game_state = True
 
 	if game_state:
-		if game.update() == 1:
+
+		update_value = game.update()
+
+		if update_value == 1:
 			Start_Game_Button.clicked = False
 			game_state = False
-			restart = False
+			game = Game([0,0])
 
-		elif game.update() == 2:
-			print(game.score)
+		elif update_value == 2:
+
 			game = Game(game.score)
+
+
 
 
 
