@@ -1,10 +1,15 @@
 from GameLogic import *
 import sys
 import time
+import os
+
+pygame.init()
+pygame.mixer.init()
 
 #setting game and menu variables
 game_state = False
 score = [0,0]
+background_music = pygame.mixer.Sound(os.path.join("Assets","dj quads - its near.mp3"))
 
 #intializing instances for game logic and menu button logic
 Start_Text = 'Start Game'
@@ -16,6 +21,9 @@ pygame.display.set_caption("Tic Tac Toe")
 
 #setting framerate 
 FPS = 60
+
+background_music.set_volume(0.3)
+background_music.play(loops=-1)
 
 while True:
 	clock.tick(FPS)
@@ -42,8 +50,5 @@ while True:
 
 			game = Game(game.score)
 
-
-
-
-
 	pygame.display.update()
+	

@@ -1,5 +1,6 @@
 import pygame
 import time
+import os
 
 #setting width and height of the window
 width = 800
@@ -46,6 +47,9 @@ class Button:
 
 	def __init__(self,dimensions,pos,text,font_size,dynamic_elevation,colour=cyan,background_colour=background_cyan,border_radius=10,IF_OFF=10):
 
+		self.button_click_sound = pygame.mixer.Sound(os.path.join("Assets","Button_Press.mp3"))
+		self.button_release_sound = pygame.mixer.Sound(os.path.join("Assets","Button_Release.mp3"))
+
 		#button background 
 		self.dynamic_elevation = dynamic_elevation
 		self.button_rect = pygame.Rect(0,0,dimensions[0],dimensions[1])
@@ -84,19 +88,26 @@ class Button:
 			if pygame.mouse.get_pressed()[0]:
 				pygame.draw.rect(screen, cyan, self.back_button_rect_hover, border_radius = 10)
 				screen.blit(self.Start_Text_label, self.text_rect_clicked)
+				
+				if not self.clicked:
+					self.button_click_sound.play()
 				self.clicked = True
 
-			else:
+			else:		
 				pygame.draw.rect(screen, background_cyan, self.back_button_rect_hover, border_radius = 10)
 				pygame.draw.rect(screen, cyan, self.button_rect_hover, border_radius = 10)
 				screen.blit(self.Start_Text_label, self.text_rect)
 				#returns the button is clicked when you have let go of the button
 				if self.clicked:
+					self.button_click_sound.stop()
+					self.button_release_sound.play()
 					return True
 		else:
 			pygame.draw.rect(screen, background_cyan, self.back_button_rect, border_radius = 10)
 			pygame.draw.rect(screen, dark_cyan, self.button_rect, border_radius = 10)
 			screen.blit(self.Start_Text_label, self.text_rect)
+			self.button_click_sound.stop()
+			self.button_release_sound.stop()
 
 class Menu:
 
@@ -132,14 +143,3 @@ class Menu:
 
 		self.draw_rect_alpha(screen, self.colour, self.menu, 10)
 		screen.blit(self.text_label, self.text_rect)
-
-
-
-
-
-
-
-
-				
-		
-		

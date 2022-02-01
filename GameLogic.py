@@ -6,6 +6,8 @@ import os
 class Game:
 
 	def __init__(self, score):
+
+		self.place_sound = pygame.mixer.Sound(os.path.join("Assets","Piece_Sound.mp3"))
 		#list of which board squares are occupied
 		self.board = [0 for i in range(9)]
 
@@ -59,7 +61,6 @@ class Game:
 				#print O onto respective square
 				O_rect = self.O_Obj.get_rect(center = self.square_pos[idx].center)
 				screen.blit(self.O_Obj, O_rect)
-		
 
 	def check_win(self):
 		
@@ -128,6 +129,7 @@ class Game:
 			else:
 				#when you let go of the mouse button it will record the square you are over and place your piece on it
 				if self.clicked:
+					self.place_sound.play()
 					if self.board[self.selected_square] == 0:
 						self.board[self.selected_square] = self.current_piece
 						self.player = 1 if self.player == 0 else 0
@@ -145,7 +147,6 @@ class Game:
 			#updating graphics
 			self.draw()
 
-
 		elif self.game_status == 1:
 
 			if self.player == 0:
@@ -161,8 +162,6 @@ class Game:
 				
 				self.score[self.player] += 1
 				return 2
-
-			
 			
 		elif self.game_status == 2:
 			
@@ -175,13 +174,5 @@ class Game:
 
 				return 2
 
-
-
 		screen.blit(self.score_label,self.score_label_rect)
 
-		
-
-
-		
-
-		
