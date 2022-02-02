@@ -22,7 +22,7 @@ pygame.display.set_caption("Tic Tac Toe")
 #setting framerate 
 FPS = 60
 
-background_music.set_volume(0.3)
+background_music.set_volume(0.1)
 background_music.play(loops=-1)
 
 while True:

@@ -50,6 +50,9 @@ class Button:
 		self.button_click_sound = pygame.mixer.Sound(os.path.join("Assets","Button_Press.mp3"))
 		self.button_release_sound = pygame.mixer.Sound(os.path.join("Assets","Button_Release.mp3"))
 
+		self.button_click_sound.set_volume(0.7)
+		self.button_release_sound.set_volume(0.7)
+
 		#button background 
 		self.dynamic_elevation = dynamic_elevation
 		self.button_rect = pygame.Rect(0,0,dimensions[0],dimensions[1])

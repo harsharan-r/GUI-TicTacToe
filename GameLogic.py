@@ -8,6 +8,7 @@ class Game:
 	def __init__(self, score):
 
 		self.place_sound = pygame.mixer.Sound(os.path.join("Assets","Piece_Sound.mp3"))
+		self.place_sound.set_volume(0.2)
 		#list of which board squares are occupied
 		self.board = [0 for i in range(9)]
 
@@ -123,14 +124,14 @@ class Game:
 			self.current_piece = 'X' if self.player == 1 else 'O'
 
 			#checks if you click a square
-			if pygame.mouse.get_pressed()[0]:
-				self.clicked = True
+			if pygame.mouse.get_pressed()[0] and self.board[self.selected_square] == 0:
+					self.clicked = True
 
 			else:
 				#when you let go of the mouse button it will record the square you are over and place your piece on it
 				if self.clicked:
-					self.place_sound.play()
 					if self.board[self.selected_square] == 0:
+						self.place_sound.play()
 						self.board[self.selected_square] = self.current_piece
 						self.player = 1 if self.player == 0 else 0
 						self.clicked = False
