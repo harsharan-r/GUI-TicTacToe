@@ -2,6 +2,13 @@
 
 A classic game of Tic Tac Toe, reimagined with a visually and audibly engaging interface built using **Pygame**.
 
+[https://youtube.com/shorts/w8Ln7YTjxLE?feature=share](https://youtu.be/PJ9XW280XSE)
+
+<p>
+  Check out this interesting video:
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/PJ9XW280XSE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
 ---
 
 ### ✨ Features
