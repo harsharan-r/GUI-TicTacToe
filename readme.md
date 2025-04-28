@@ -2,12 +2,12 @@
 
 A classic game of Tic Tac Toe, reimagined with a visually and audibly engaging interface built using **Pygame**.
 
-[https://youtube.com/shorts/w8Ln7YTjxLE?feature=share](https://youtu.be/PJ9XW280XSE)
+---
+### Demo
 
-<p>
-  Check out this interesting video:
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/PJ9XW280XSE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
+Check out a demo of the app on YouTube by clicking below. Be sure to keep the Sound On!
+
+[![thumbnail](https://github.com/user-attachments/assets/e775b0ac-d2b9-440a-97f5-4b349ee10d7e)](https://www.youtube.com/watch?v=PJ9XW280XSE)
 
 ---
 
@@ -46,7 +46,7 @@ Run the game by executing:
 python Main.py
 ```
 
-Enjoy playing directly from your terminal!
+Enjoy playing!
 
 ---
 
